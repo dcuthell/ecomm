@@ -60,6 +60,7 @@ SiteManager.prototype.addAccount = function(first, last, userName, password) {
   this.accounts.push(newAccount);
 }
 
+//goodToCart will take a specific good and put a specifc amount into a specific buyer's cart
 SiteManager.prototype.goodToCart = function(buyerID, goodID, amount) {
   if(this.goods[goodID].decreaseAmount(amount) === 0){
     alert("Not enough inventory");
@@ -68,6 +69,7 @@ SiteManager.prototype.goodToCart = function(buyerID, goodID, amount) {
   this.buyers[buyerID].addToCart(this.goods[goodID], amount);
 }
 
+//cartToGood will return a specific amount of a specific good in a specific buyer's cart to the original good's location
 SiteManager.prototype.cartToGood = function(buyerID, goodID, amount) {
   var oldGoodID = this.buyers[buyerID].cart[goodID].oldID;
   if(this.buyers[buyerID].removeFromCart(goodID, amount) === 0){
